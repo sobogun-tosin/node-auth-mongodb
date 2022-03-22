@@ -83,22 +83,7 @@ const loginUser = async (req, res) => {
   }
 };
 
-//GET user
-const getUser = async (req, res) => {
-  try {
-    const { _id, email, name } = await User.findById(req.user.id);
-    res.json({ id: _id, name, email });
-  } catch (error) {
-    res.status(400);
-    res.json({
-      message: error.message,
-      stack: error.stack,
-    });
-  }
-};
-
 module.exports = {
   registerUser,
   loginUser,
-  getUser,
 };
