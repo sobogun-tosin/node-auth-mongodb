@@ -62,7 +62,10 @@ const loginUser = async (req, res) => {
 
     if (!email || !password) {
       res.status(400);
-      res.json(req);
+      res.json({
+        email,
+        password,
+      });
       throw new Error("Please complete the form fields");
     }
 
