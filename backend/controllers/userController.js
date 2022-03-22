@@ -60,6 +60,11 @@ const loginUser = async (req, res) => {
   try {
     const { email, password } = req.body;
 
+    if (!email || !password) {
+      res.status(400);
+      throw new Error("Please complete the form fields");
+    }
+
     const user = await User.findOne({ email });
     const comparePassword = await bcrypt.compare(password, user.password);
 
